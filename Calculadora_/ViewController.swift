@@ -9,8 +9,22 @@
 import UIKit
 
 class ViewController: UIViewController {
+    
     @IBAction func doChangeValores(_ sender: Any) {
         
+        var porcentajePropina = 0.0
+        porcentajePropina = Double(sldPorcentajePropina.value)
+        porcentajePropina.round()
+        lblPorcenajePropina.text = "\(porcentajePropina)%"
+        porcentajePropina = porcentajePropina / 100.0
+        
+        var cantidadPropina = 0.0
+        cantidadPropina = Double(txtTotalSinPropina.text!)! * porcentajePropina
+        
+        lblPorcenajePropina.text = "$\(cantidadPropina)"
+        
+        let totalConPropina = Double(txtTotalSinPropina.text!)! + cantidadPropina
+        lblPorcenajePropina.text = "$\(totalConPropina)"
     }
     
     @IBOutlet weak var txtTotalSinPropina: UITextField!
